@@ -155,7 +155,3 @@ Developed by **Mohd Arshad**.
 * **LinkedIn:** [Mohd Arshad](https://www.linkedin.com/in/mohd-arshad-156227314/)
 * **GitHub:** [MohdArshad-cell](https://github.com/MohdArshad-cell)
 
----
-
-*Note: This project is a demonstration of Polyglot Programming (Java + Python) and System Design capabilities for educational purposes.*
-Bas isko paste kar aur commit kar de! GitHub profile chamak jayegi.
