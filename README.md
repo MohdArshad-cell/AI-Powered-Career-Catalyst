@@ -159,5 +159,3 @@ Developed by **Mohd Arshad**.
 
 *Note: This project is a demonstration of Polyglot Programming (Java + Python) and System Design capabilities for educational purposes.*
 Bas isko paste kar aur commit kar de! GitHub profile chamak jayegi.
-
-```
