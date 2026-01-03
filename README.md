@@ -1,134 +1,163 @@
-# Career Catalyst: AI-Powered Career Toolkit
+# 🚀 Career Catalyst: AI-Powered Career Assistant
 
-Career Catalyst is an all-in-one, AI-powered web application designed to help job seekers create winning resumes, tailor them to specific job descriptions, evaluate them against Applicant Tracking Systems (ATS), and generate compelling cover letters.
+![Java](https://img.shields.io/badge/Backend-Java%20Spring%20Boot-orange)
+![Frontend](https://img.shields.io/badge/Frontend-React%20%7C%20TypeScript-blue)
+![AI](https://img.shields.io/badge/AI-Google%20Gemini%20Pro-green)
+![Build](https://img.shields.io/badge/Build-Maven-red)
 
+**Career Catalyst** is an enterprise-grade, full-stack application designed to bridge the gap between job seekers and their dream roles using Generative AI. 
 
+It solves the "Black Hole" problem of Applicant Tracking Systems (ATS) by providing real-time resume optimization, keyword gap analysis, and automated document generation using **Java Spring Boot**, **Python**, and **LaTeX**.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-Career Catalyst offers a comprehensive suite of tools to supercharge your job application process:
+### 1. 📄 Intelligent Resume Builder (LaTeX Engine)
+- Creates professional, ATS-friendly PDF resumes using server-side **LaTeX compilation**.
+- Ensures perfect formatting and structure that standard Word parsers cannot break.
+- Offers multiple industry-standard templates (Elegant, Modern, Professional).
 
-📄 Resume From Scratch  
-An intuitive, user-friendly resume builder to create professional resumes from the ground up. Choose from multiple templates and customize the content to highlight your skills and experience.
+### 2. 🤖 AI Resume Tailor (The "ATS Hacker")
+- **Input:** Your Current Resume + Target Job Description (JD).
+- **Process:** Analyzing the semantic gap between your skills and the JD.
+- **Output:** A rewritten, keyword-optimized resume json/pdf that aligns perfectly with the role.
 
-🤖 AI Resume Tailor  
-Our AI-powered tool analyzes your resume against a job description and provides a tailored version optimized to catch the eye of recruiters.
+### 3. 🔍 Deep ATS Evaluation
+- Provides a **Match Score (0-100%)** indicating your probability of getting shortlisted.
+- Lists **Missing Keywords** and critical hard/soft skills.
+- Offers actionable feedback to improve content quality.
 
-🔍 ATS Evaluator & Skill Gap Analysis  
-Beat the bots! Upload your resume and a job description to get an ATS score, keyword analysis, and a detailed skill gap analysis to ensure your application makes it through the initial screening.
+### 4. ✍️ Contextual Cover Letter Generator
+- Generates personalized cover letters by analyzing the tone of the company's JD and your specific achievements.
+- Eliminates generic "To Whom It May Concern" templates.
 
-✍️ Cover Letter Generator  
-Generate personalized and persuasive cover letters in seconds. Our AI crafts a unique letter based on your resume and the job you're applying for.
+### 5. 🎤 AI Mock Interviewer
+- Generates role-specific interview questions based on the JD.
+- Helps candidates prepare for technical and behavioral rounds.
+
+---
+
+## 🏗️ System Architecture
+
+The application follows a **Hybrid Microservices-inspired Architecture**:
+
+1.  **Frontend (Client):** React.js with TypeScript handles user interaction and state management.
+2.  **API Layer (Gateway):** **Spring Boot** (Java) serves as the robust backend, handling REST API requests, file storage, and business logic.
+3.  **Intelligence Layer:** Java triggers specialized **Python Scripts** via `ProcessBuilder`.
+4.  **GenAI Integration:** Python scripts communicate with **Google Gemini API** for reasoning and content generation.
+5.  **Document Engine:** The backend compiles `.tex` files into PDFs using a local LaTeX distribution.
 
 ---
 
 ## 🛠️ Tech Stack
 
-This project is built with a modern and robust tech stack:
+### Backend
+* **Language:** Java 17+
+* **Framework:** Spring Boot 3.x (Web, REST)
+* **Build Tool:** Maven
+* **PDF Engine:** LaTeX (TeX Live / MiKTeX)
 
 ### Frontend
-- React  
-- TypeScript  
-- Axios for API requests  
-- React Router for navigation  
+* **Library:** React.js (v18)
+* **Language:** TypeScript
+* **Styling:** CSS Modules / Custom CSS
+* **HTTP Client:** Axios
 
-### Backend
-- Spring Boot for creating robust REST APIs  
-- Maven for dependency management  
-
-### AI Integration
-- Python scripts for AI-powered logic  
-- Gemini API for generative AI capabilities  
+### AI & Scripting
+* **Language:** Python 3.x
+* **LLM:** Google Gemini Pro
+* **Libraries:** `google-generativeai`, `requests`
 
 ---
 
 ## 🚀 Getting Started
 
-To get a local copy up and running, follow these simple steps.
+Follow these instructions to set up the project locally.
 
 ### Prerequisites
-Make sure you have the following installed on your machine:
-- Node.js (v14 or later)
-- npm (Node Package Manager)
-- Java (JDK 11 or later)
-- Maven
-- Python (v3.8 or later)
+Ensure you have the following installed:
+* **Java JDK 17+**
+* **Node.js & npm**
+* **Python 3.8+**
+* **Maven**
+* **LaTeX Distribution:**
+    * *Windows:* Install [MiKTeX](https://miktex.org/download) (Required for PDF generation).
+    * *Linux:* `sudo apt-get install texlive-full`
 
----
+### Installation Guide
 
-### Installation
-
-#### 1. Clone the repository
+#### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/ai-powered-carrer-catalyst.git
-cd ai-powered-carrer-catalyst
+git clone [https://github.com/MohdArshad-cell/ai-powered-career-catalyst.git](https://github.com/MohdArshad-cell/ai-powered-career-catalyst.git)
+cd ai-powered-career-catalyst
 
-2. Set up the Frontend
+```
+
+#### 2. Backend Setup
+
+Navigate to the backend directory and configure the environment:
+
+```bash
+cd backend
+# Install Python dependencies for the AI engine
+pip install -r src/main/resources/scripts/requirements.txt
+
+```
+
+**Configure API Key:**
+Open `src/main/resources/application.properties` (or set as Environment Variable) and add your Gemini API Key:
+
+```properties
+gemini.api.key=YOUR_GOOGLE_GEMINI_API_KEY
+file.upload-dir=./uploads
+
+```
+
+Run the Spring Boot Server:
+
+```bash
+mvn spring-boot:run
+
+```
+
+*Server will start at `http://localhost:8080*`
+
+#### 3. Frontend Setup
+
+Open a new terminal and navigate to the frontend directory:
+
+```bash
 cd frontend
 npm install
 npm start
-The frontend will be available at http://localhost:3000
 
-3. Set up the Backend
-cd ../backend
-mvn spring-boot:run
-The backend server will start on http://localhost:8080
+```
 
-4. Set up Python Scripts
-
-Navigate to the Python script directories and install the required packages:
-cd ../backend/src/main/resources/scripts
-pip install -r requirements.txt
-# Repeat for other script directories if they have their own requirements.txt
-
-Environment Variables
-Create a .env file in the frontend and backend directories and add the necessary environment variables, such as your Gemini API key.
-Example .env for the backend:
-GEMINI_API_KEY=your_api_key_here
-
-🧭 Usage
-
-Once the application is running, open your browser to http://localhost:3000
- to access Career Catalyst.
-
-Navigate to the desired feature from the home page.
-
-Fill in the forms with your information.
-
-Generate your resume, tailored content, or cover letter.
-
-Download or copy the generated output.
-
-🤝 Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-
-Steps to contribute:
-
-# Fork the Project
-# Create your Feature Branch
-git checkout -b feature/AmazingFeature
-
-# Commit your Changes
-git commit -m 'Add some AmazingFeature'
-
-# Push to the Branch
-git push origin feature/AmazingFeature
-
-# Open a Pull Request
-
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
-
-📬 Contact
-Mohd Arshad
-Email: arshadmohd8574@gmail.com
-LinkedIn: https://www.linkedin.com/in/mohd-arshad-156227314/
-GitHub: https://github.com/MohdArshad-cell
+*Client will open at `http://localhost:3000*`
 
 ---
-Would you like me to include a **project banner image section** (like `![Career Catalyst Banner](assets/banner.pn
+
+## 📸 Usage Workflow
+
+1. **Select a Template:** Choose a resume design.
+2. **Input Data:** Fill in profile, education, and projects (or upload existing JSON).
+3. **Tailor:** Paste the Job Description of the role you want.
+4. **Generate:** Click "Download PDF". The backend orchestrates Java, Python, and LaTeX to deliver the file.
+
+---
+
+## 📬 Contact & Support
+
+Developed by **Mohd Arshad**.
+
+* **Email:** [arshadmohd8574@gmail.com](mailto:arshadmohd8574@gmail.com)
+* **LinkedIn:** [Mohd Arshad](https://www.linkedin.com/in/mohd-arshad-156227314/)
+* **GitHub:** [MohdArshad-cell](https://github.com/MohdArshad-cell)
+
+---
+
+*Note: This project is a demonstration of Polyglot Programming (Java + Python) and System Design capabilities for educational purposes.*
+Bas isko paste kar aur commit kar de! GitHub profile chamak jayegi.
+
+```
